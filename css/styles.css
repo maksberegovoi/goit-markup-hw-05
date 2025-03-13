@@ -13,6 +13,8 @@
   --grey: rgba(46, 47, 66, 0.7);
   --white: #fff;
   --dairy: #fcfcfc;
+
+  --animation-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -95,7 +97,8 @@ a {
   padding: 24px 0;
   height: 100%;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--animation-fast);
+  transition-property: color;
 }
 .header-menu {
   list-style: none;
@@ -147,24 +150,13 @@ a {
 }
 
 .contacts-menu-link {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--animation-fast);
+  transition-property: color;
 }
 
 .contacts-menu-link:hover,
 .contacts-menu-link:focus {
   color: var(--ocean);
-}
-
-.btn {
-  font-family: var(--font-family);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: var(--white);
-
-  background: var(--iris);
-  cursor: pointer;
 }
 
 h2 {
@@ -198,7 +190,7 @@ h3 {
   margin: 0 auto;
 }
 
-.hero .btn {
+.btn {
   padding: 16px 32px;
   min-width: 169px;
   height: 56px;
@@ -208,13 +200,22 @@ h3 {
   display: block;
   margin: 0 auto;
 
-  transition: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--white);
+
+  background: var(--iris);
+  cursor: pointer;
+
+  transition: var(--animation-fast);
+  transition-property: background-color;
 }
 
-.hero .btn:hover,
-.hero .btn:focus {
+.btn:hover,
+.btn:focus {
   background-color: var(--ocean);
 }
 
@@ -247,7 +248,8 @@ h3 {
 }
 
 .spdt-icon {
-  fill: var(--navy-blue);
+  /* fill: var(--navy-blue); */
+  stroke: var();
 
   width: 64px;
   height: 64px;
@@ -344,7 +346,8 @@ h3 {
   border: 1px solid var(--iris);
   background-color: var(--iris);
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--animation-fast);
+  transition-property: background-color;
 }
 
 .social-icon {
@@ -375,7 +378,8 @@ h3 {
 .portfolio-list-item {
   width: calc((100% - 2 * 24px) / 3);
 
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--animation-fast);
+  transition-property: box-shadow;
 }
 
 .portfolio-overlay-text {
@@ -396,9 +400,8 @@ h3 {
   background: var(--iris);
 
   transform: translateY(100%);
+  transition: var(--animation-fast);
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-list-item:hover .portfolio-overlay-text {
@@ -502,3 +505,172 @@ p {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+/* #region modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--navy-blue-modal);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  position: relative;
+
+  border-radius: 4px;
+  background-color: var(--dairy);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+
+  max-width: 408px;
+  min-height: 584px;
+
+  padding: 24px;
+}
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  color: var(--navy-blue);
+
+  transition: var(--animation-fast);
+  transition-property: color, background-color;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  color: #fff;
+  background-color: var(--ocean);
+}
+.modal-close-icon {
+  fill: currentColor;
+}
+.modal-caption {
+  padding: 48px 0 16px;
+
+  color: var(--navy-blue);
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.02em;
+}
+.modal-form {
+}
+.modal-form-field {
+}
+.modal-form-label {
+  color: var(--light-slate);
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+  letter-spacing: 0.04em;
+}
+.modal-form-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.modal-form-icon {
+  position: absolute;
+  left: 16px;
+  pointer-events: none;
+  fill: var(--navy-blue);
+
+  transition: var(--animation-fast);
+  transition-property: fill;
+}
+
+.modal-form-input:hover + .modal-form-icon,
+.modal-form-input:focus + .modal-form-icon {
+  fill: var(--ocean);
+}
+.modal-form-comment {
+  resize: none;
+  width: 100%;
+  outline: none;
+
+  border-radius: 4px;
+  border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.4));
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+  letter-spacing: 0.04em;
+
+  transition: var(--animation-fast);
+  transition-property: border;
+}
+.modal-form-input {
+  width: 100%;
+  min-height: 40px;
+  padding-left: 38px;
+  border-radius: 4px;
+  border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.4));
+  outline: none;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+  letter-spacing: 0.04em;
+
+  transition: var(--animation-fast);
+  transition-property: border;
+}
+.modal-form-input:hover,
+.modal-form-input:focus,
+.modal-form-comment:hover,
+.modal-form-comment:focus {
+  border: 1px solid var(--iris);
+}
+.modal-agreement {
+  display: block;
+  margin-bottom: 24px;
+  
+  color: var(--LIGHT-SLATE, #8e8f99);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+  letter-spacing: 0.04em;
+}
+.modal-checkbox {
+}
+.modal-agreement-link {
+  color: var(--IRIS, #4d5ae5);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+
+  transition: var(--animation-fast);
+  transition-property: color;
+}
+.modal-agreement-link:hover,
+.modal-agreement-link:focus {
+  color: var(--ocean);
+}
+/* #endregion */
