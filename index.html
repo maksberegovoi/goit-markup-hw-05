@@ -587,13 +587,27 @@
             </li>
           </ul>
         </div>
+        <div class="footer-sub">
+          <p class="footer-sub-title">Subscribe</p>
+          <form class="footer-sub-form">
+            <label class="sub-form-label">
+              <input type="email" class="sub-form-input" placeholder="E-mail" />
+            </label>
+            <button type="submit" class="btn sub-form-btn">
+              Subscribe
+              <svg class="sub-form-icon" width="24" height="24">
+                <use href="./images/icons.svg#subscribe"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
-    <div class="modal-overlay">
+    <div class="mod1al-overlay">
       <div class="modal">
         <button type="button" class="modal-close-button">
           <svg class="modal-close-icon" width="8" height="8">
-           <use href="./images/icons.svg#close"></use>
+            <use href="./images/icons.svg#close"></use>
           </svg>
         </button>
         <p class="modal-caption">
@@ -633,13 +647,17 @@
           <div class="modal-form-field">
             <label for="comment" class="modal-form-label">Comment</label>
             <div class="modal-form-wrapper">
-              <textarea class="modal-form-comment" name="comment" id=""></textarea>
+              <textarea
+                class="modal-form-comment"
+                name="comment"
+                id="comment"
+              ></textarea>
             </div>
           </div>
           <!--#endregion-->
           <!-- #region modal form agreement -->
           <label class="modal-agreement">
-            <input type="checkbox" name="" />
+            <input type="checkbox" />
             <span class="modal-checkbox">
               <svg class="" width="8" height="8">
                 <use href="./images/icons.svg#check-mark"></use>
