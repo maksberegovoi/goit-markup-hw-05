@@ -495,6 +495,7 @@ p {
 .footer-sub-title {
   margin-bottom: 16px;
 
+  color: #ffffff;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5; /* 150% */
@@ -523,10 +524,11 @@ p {
   letter-spacing: 0.04em;
 }
 .sub-form-btn {
-  width: 165px;
+  min-width: 165px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .sub-form-icon {
   min-width: 24px;
@@ -556,17 +558,25 @@ p {
 /* #region modal */
 .modal-overlay {
   position: fixed;
-  inset: 0;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--navy-blue-modal);
+  background-color: rgba(46, 47, 66, 0.4);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: var(--animation-fast);
+  transition-property: opacity, visibility;
 }
 .modal {
-  position: relative;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   border-radius: 4px;
   background-color: var(--dairy);
@@ -577,6 +587,9 @@ p {
   min-height: 584px;
 
   padding: 24px;
+
+  transition: var(--animation-fast);
+  transition-property: transform;
 }
 .modal-close-button {
   display: flex;
@@ -593,8 +606,10 @@ p {
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: transparent;
+  background-color: #e7e9fc;
   color: var(--navy-blue);
+  cursor: pointer;
+  
 
   transition: var(--animation-fast);
   transition-property: color, background-color;
